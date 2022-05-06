@@ -1,0 +1,27 @@
+{%extends 'index.html'%}
+{% block body_block%}
+<h5> welcome: {{request.user}}</h5>
+    <div class="row mt-3 mb-3">
+        {%for book in book%}
+        <div class="col-4">
+            <div class="card mb-3" style="width: 18rem;">
+                {%if book.images%}
+                <img src="{{book.images.url}}" class="card-img-top" alt="no img " height="200">
+
+                {%endif%}
+
+                <div class="card-body mb-2" align="center">
+                    <h5 class="card-title mb-2 text-center">{{book.book_name}}</h5>
+                    <h5 class="card-title mb-2 text-center">{{book.author}}</h5>
+                    <h5 class="card-title mb-2 text-center">{{book.price}}</h5>
+                    <h5 class="card-title mb-2 text-center">{{book.copies}}</h5>
+                    <a href="{%url 'addtocart' book.id%}" class="btn btn-outline-primary"> AddtoCart</a>
+
+                </div>
+            </div>
+        </div>
+
+        {%endfor%}
+
+    </div>
+{%endblock%}
